@@ -1,0 +1,56 @@
+﻿@model IEnumerable<KhumaloCraft.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome to the Admin Page</h1>
+<h3>View Customer Orders Below</h3>
+
+<div class="text-center mb-3">
+
+    <a asp-action="Create" asp-controller="AddAdmin" class="btn btn-primary ml-3">Add Admin</a>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Username</th>
+            <th>Availability</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Product ID</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <td>@Html.DisplayFor(modelItem => item.Availability)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="@item.ImageUrl" alt="Product Image" style="max-width: 100px; max-height: 100px;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.Product.ProductId)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TransactionId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.TransactionId" class="btn btn-primary ml-1">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.TransactionId" class="btn btn-danger ml-1">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

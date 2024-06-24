@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+
+<h2>Contact Us</h2>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="success-message">
+        <p>@ViewBag.SuccessMessage</p>
+    </div>
+}
+else
+{
+    <form method="post">
+        <label for="firstname">First Name</label><br />
+        <input type="text" id="firstname" name="firstname" required><br />
+
+        <label for="lastname">Last Name</label><br />
+        <input type="text" id="lastname" name="lastname" required><br />
+
+        <label for="email">Email</label><br />
+        <input type="email" id="email" name="email" required><br />
+
+        <label for="message">Message</label><br />
+        <textarea id="message" name="message" required></textarea><br />
+
+        <input type="submit" value="Submit">
+    </form>
+}

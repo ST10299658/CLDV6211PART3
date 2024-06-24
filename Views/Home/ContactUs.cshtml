@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - KwaKhumalo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        form {
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        input[type=text], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #333;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #555;
+            }
+    </style>
+</head>
+
+
+<h2>Contact Us</h2>
+
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+
+<form id="contactForm" method="post">
+    <label for="firstname">First Name</label><br />
+    <input type="text" id="firstname" name="firstname" required><br />
+
+    <label for="lastname">Last Name</label><br />
+    <input type="text" id="lastname" name="lastname" required><br />
+
+    <label for="email">Email</label><br />
+    <input type="email" id="email" name="email" required><br />
+
+    <label for="message">Message</label><br />
+    <textarea id="message" name="message" required></textarea><br />
+
+    <input type="submit" value="Submit">
+</form>
+
+<div id="thankYouMessage" style="display: none;">Thank you for contacting us!</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        // Prevent the form from submitting normally
+        event.preventDefault();
+
+        // Get the values from the form fields
+        var firstName = document.getElementById("firstname").value;
+        var lastName = document.getElementById("lastname").value;
+
+        // Display thank you message
+        document.getElementById("thankYouMessage").style.display = "block";
+        document.getElementById("thankYouMessage").textContent = "Thank you, " + firstName + " " + lastName + ", for contacting us!";
+
+        // You can also submit the form using AJAX if needed
+        // Example:
+        // var formData = new FormData(document.getElementById("contactForm"));
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", "/YourController/YourAction");
+        // xhr.send(formData);
+    });
+</script>
+ <a asp-action="Index" asp-controller="Home" class="btn btn-lg btn-primary mr-3">Go Back To Home Page</a> 
